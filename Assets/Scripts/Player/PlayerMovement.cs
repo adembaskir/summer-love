@@ -26,13 +26,14 @@ public class PlayerMovement : MonoBehaviour
     {
         anim = this.GetComponentInChildren<Animator>();
         rb = this.GetComponent<Rigidbody>();
+        Time.timeScale = 1;
     }
 
 
     void Update()
     {
         FallCheck();
-        transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
+        
         //if (TouchController.Instance.isTouch == true)
         //{
         //    if (canJump == true)
@@ -52,14 +53,18 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpCancel = true;
         }
+
     }
     void FixedUpdate()
     {
+        transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
         if (jump)
         {
             rb.velocity = new Vector3(rb.velocity.x,jumpSpeed);
+            anim.SetBool("Jump", true);
             jump = false;
             grounded = false;
+            anim.SetBool("Fall", true);
         }
         if (jumpCancel)
         {
@@ -68,39 +73,47 @@ public class PlayerMovement : MonoBehaviour
             jumpCancel = false;
         }
     }
-
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag =="Ground")
         {
             grounded = true;
             
-            if (anim !=null) { anim.SetBool("Jump", false); }
+            if (anim !=null) { anim.SetBool("Jump", false); anim.SetBool("Fall",false); }
             
         }
     }
-
-
     private void OnTriggerEnter(Collider other)
     {
-
         onEnter?.Invoke();
-        if(other.tag == "Heart")
+
+        if (other.tag == "Heart")
         {
+            UIManager.instance.score+=1;
             grounded = true;
             anim.SetBool("Jump", false);
+            anim.SetBool("Fall", false);
             Handheld.Vibrate();
+            StartCoroutine(WaitForEnd(other.gameObject));
             
+        }
+        if(other.tag=="Heart1")
+        {
+	    UIManager.instance.score+=1;
+            StartCoroutine(WaitForEnd(other.gameObject));	
         }
         if(other.tag == "Obstacle")
         {
             onDead?.Invoke();
             anim.SetTrigger("Dead");
+            UIManager.instance.elements[1].SetActive(true);
             PlayerMovement.instance.enabled = false;
         }
         if(other.tag == "Area")
         {
             finish = true;
+            anim.SetTrigger("Kiss");
+            UIManager.instance.HighScore();
         }
     }
     private void OnTriggerExit(Collider other)
@@ -115,6 +128,15 @@ public class PlayerMovement : MonoBehaviour
         if (transform.position.y <= -1)
         {
             Time.timeScale = 0;
+            if(Time.timeScale == 0)
+            {
+                UIManager.instance.elements[1].SetActive(true);
+            }
         }
+    }
+    IEnumerator WaitForEnd(GameObject gameObject)
+    {
+        yield return new WaitForSeconds(0.7f);
+        gameObject.SetActive(false);
     }
 }

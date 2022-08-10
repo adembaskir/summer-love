@@ -1,0 +1,32 @@
+{
+  "GlobalObjectId_V1-2-cb3a2af2a9ab96a48b41ffb2a38def8d-295435765-0": {
+    "GameObjectId": "GlobalObjectId_V1-2-cb3a2af2a9ab96a48b41ffb2a38def8d-295435765-0",
+    "SectionColorRed": 0.77,
+    "SectionColorGreen": 0.0,
+    "SectionColorBlue": 0.77,
+    "SectionAltColorRed": 0.77,
+    "SectionAltColorGreen": 0.0,
+    "SectionAltColorBlue": 0.77,
+    "RemoveSectionDuringBuild": false
+  },
+  "GlobalObjectId_V1-2-cb3a2af2a9ab96a48b41ffb2a38def8d-1603685368-0": {
+    "GameObjectId": "GlobalObjectId_V1-2-cb3a2af2a9ab96a48b41ffb2a38def8d-1603685368-0",
+    "SectionColorRed": 0.76,
+    "SectionColorGreen": 0.56,
+    "SectionColorBlue": 0.3,
+    "SectionAltColorRed": 0.76,
+    "SectionAltColorGreen": 0.56,
+    "SectionAltColorBlue": 0.3,
+    "RemoveSectionDuringBuild": false
+  },
+  "GlobalObjectId_V1-2-cb3a2af2a9ab96a48b41ffb2a38def8d-164361553-0": {
+    "GameObjectId": "GlobalObjectId_V1-2-cb3a2af2a9ab96a48b41ffb2a38def8d-164361553-0",
+    "SectionColorRed": 0.76,
+    "SectionColorGreen": 0.56,
+    "SectionColorBlue": 0.3,
+    "SectionAltColorRed": 0.76,
+    "SectionAltColorGreen": 0.56,
+    "SectionAltColorBlue": 0.3,
+    "RemoveSectionDuringBuild": false
+  }
+}

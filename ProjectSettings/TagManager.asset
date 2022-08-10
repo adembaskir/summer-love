@@ -8,6 +8,7 @@ TagManager:
   - Heart
   - Obstacle
   - Area
+  - Heart1
   layers:
   - Default
   - TransparentFX

@@ -123,6 +123,24 @@ MonoBehaviour:
   target: {fileID: 0}
   myAgent: {fileID: 1105261725133941532}
   anim2: {fileID: 873955888}
+  nextTarget: {fileID: 0}
+  onEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2667626927512175552}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  hit: 0
+  confetti: {fileID: 3008556973092499900}
 --- !u!195 &1105261725133941532
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -133,16 +151,16 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0.7
-  m_AutoTraverseOffMeshLink: 1
+  m_StoppingDistance: 0.2
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0.58
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!54 &1105261725133941535
@@ -399,7 +417,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heart_Anim
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3451118302482216456, guid: 3708015bc2a9348e18fce7f88bbe2d09, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3708015bc2a9348e18fce7f88bbe2d09, type: 3}
 --- !u!4 &2489182227058109190 stripped
 Transform:
@@ -527,6 +546,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68ceee687debb8d148d83be2ac10ee12, type: 3}
+--- !u!1 &2667626927512175552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1231145792661907545, guid: 68ceee687debb8d148d83be2ac10ee12,
+    type: 3}
+  m_PrefabInstance: {fileID: 3751700927949908889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2670415182513723884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1233846007582650997, guid: 68ceee687debb8d148d83be2ac10ee12,

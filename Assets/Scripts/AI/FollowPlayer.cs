@@ -14,7 +14,9 @@ public class FollowPlayer : MonoBehaviour
     Animator anim;
     public Transform nextTarget;
     public UnityEvent onEnter;
-
+    public int hit;
+    public GameObject confetti;
+   
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
@@ -27,8 +29,9 @@ public class FollowPlayer : MonoBehaviour
             myAgent.SetDestination(target.position);
             transform.rotation = target.rotation;
             anim.SetBool("Running",true);
+            StartCoroutine(WaitForHeartAnim());
         }
-        if (PlayerMovement.instance.finish == true)
+        if (PlayerMovement.instance.finish == true && playerHasTouched)
         {
             myAgent.SetDestination(nextTarget.position);
             transform.rotation = nextTarget.rotation;
@@ -39,11 +42,21 @@ public class FollowPlayer : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            hit += 1;
+            if(hit == 1)
+                UIManager.instance.score += 5;
+
             onEnter?.Invoke();  
             playerHasTouched = true;
             Handheld.Vibrate();
-            anim2.SetTrigger("AA");
-           
+            anim2.SetBool("Disolve",true);
+            //this.gameObject.GetComponent<BoxCollider>().isTrigger = false;
         }
     }
+    private IEnumerator WaitForHeartAnim()
+    {
+        yield return new WaitForSeconds(0.7f);
+        confetti.SetActive(false);
+    }
+
 }
